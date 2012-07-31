@@ -12,14 +12,24 @@ public class BlockBreakListener implements Listener {
   //private final int[] shovel;
   //private final int[] shears;
 
+  private final int[] pick_tool = {270, 274, 257, 285, 278};
 
   @EventHandler(priority = EventPriority.HIGH)
   public void blockBreak(BlockBreakEvent event) {
-    //FIXME: Not very efficiant I would assume (but then again, Minecraft isn't very efficiant)
+    //FIXME: Not very efficient I would assume (but then again, Minecraft isn't very efficient)
+    boolean correctTool = false;
     for (int i = 0; i < this.pick.length; i++) {
       if (event.getBlock().getTypeId() == pick[i]) {
-        event.setCancelled(true);
-        event.getPlayer().sendMessage("You need a pickaxe to break this block");
+        for (int x = 0; x < this.pick_tool.length; x++) {
+          if (event.getPlayer().getItemInHand().getTypeId() == this.pick_tool[x]) {
+            correctTool = true;
+            x = this.pick_tool.length;
+          }
+        }
+        if (!correctTool) {
+          event.setCancelled(true);
+          event.getPlayer().sendMessage("You need a pickaxe to break this block");
+        }
       }
     }
 /*
