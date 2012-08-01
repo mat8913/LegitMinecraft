@@ -7,12 +7,15 @@ import org.bukkit.event.block.BlockBreakEvent;
 
 public class BlockBreakListener implements Listener {
   //What tool you need to destroy these blocks
-  private final int[] pick = {1, 4, 15, 16, 21, 22, 23, 24, 41, 42, 43, 44, 45, 48, 49, 52, 56, 57, 61, 62, 67, 69, 70, 71, 73, 74, 77, 82, 87, 89, 97, 98, 101, 108, 109, 112, 113, 114, 121, 129, 133};
-  private final int[] axe = {5, 17, 25, 29, 33, 35, 47, 50, 53, 54, 58, 63};
-  //private final int[] shovel = {46,  55, 59, 60};
-  //private final int[] shears = {32, 37, 38, 39, 40};
-  //special 18 cobweb:30
-  //pumpkin and watermelon hoe
+  //Not handled: 0, 7, 8, 9, 10, 11, 34, 36, 51, 90, 119
+  //TODO: 20, 26, 31, 50, 55, 75, 76, 83, 92, 93, 94, 102, 104, 105, 115, 120, 122, 127, 131, 132
+  private final int[] pick = {1, 4, 14, 15, 16, 21, 22, 23, 24, 41, 42, 43, 44, 45, 48, 49, 52, 56, 57, 61, 62, 67, 69, 70, 71, 73, 74, 77, 79, 82, 87, 89, 97, 98, 101, 108, 109, 112, 113, 114, 116, 117, 118, 121, 129, 130, 133};
+  private final int[] axe = {5, 17, 25, 27, 28, 29, 33, 35, 47, 50, 53, 54, 58, 63, 64, 65, 66, 68, 72, 84, 85, 95, 96, 99, 100, 107, 125, 126, 134, 135, 136};
+  private final int[] shovel = {2, 3, 12, 13, 46,  55, 59, 60, 78, 80, 82, 88, 110};
+  private final int[] shears = {6, 32, 37, 38, 39, 40, 106, 111};
+  private final int[] sword = {19, 30, 35, 81, 123, 124};
+  private final int[] hoe = {86, 91, 103}
+  //special 18
 
   private final int[] pick_tool = {270, 274, 257, 285, 278};
 
