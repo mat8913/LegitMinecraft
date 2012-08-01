@@ -16,11 +16,40 @@ public class BlockBreakListener implements Listener {
 
   private final int[] pick_tool = {270, 274, 257, 285, 278};
 
+  /**
+   * @param  blockIds  an array of blocks which require a tools to break
+   * @param  toolIds   an array of tools which can successfully break the block
+   * @param  block     the block which has been broken 
+   * @param  tool      the tool which was used to break the block
+   * @return           0 if the correct tool was used for the block, 1 if the incorrect tool was used for the block, 2 if the block broken doesn't apply to this tool.
+   */
+  public int correctTool(int[] blockIds, int[] toolIds, int block, int tool) {
+    for (int i = 0; i < blockIds.length; i++) {
+      if (block == blockIds[i]) {
+        for (int x = 0; x < toolIds.length; x++) {
+          if (tool == toolIds[x]) {
+            x = pick_tool.length;
+            return 0;
+          }
+        }
+      return 1;
+      }
+    } 
+    return 2;
+  }
+
   @EventHandler(priority = EventPriority.HIGH)
   public void blockBreak(BlockBreakEvent event) {
     //FIXME: Not very efficient I would assume (but then again, Minecraft isn't very efficient)
-    boolean correctTool = false;
-    for (int i = 0; i < this.pick.length; i++) {
+    if (correctTool(pick, pick_tool, event.getBlock().getTypeId(), event.getPlayer().getItemInHand().getTypeId()) == 0)
+      return;
+    if (correctTool(pick, pick_tool, event.getBlock().getTypeId(), event.getPlayer().getItemInHand().getTypeId()) == 1) {
+      event.setCancelled(true);
+      event.getPlayer().sendMessage("You need a pickaxe to break this block.");
+      return;
+    }
+    
+   /* for (int i = 0; i < this.pick.length; i++) {
       if (event.getBlock().getTypeId() == pick[i]) {
         for (int x = 0; x < this.pick_tool.length; x++) {
           if (event.getPlayer().getItemInHand().getTypeId() == this.pick_tool[x]) {
@@ -33,7 +62,7 @@ public class BlockBreakListener implements Listener {
           event.getPlayer().sendMessage("You need a pickaxe to break this block");
         }
       }
-    }
+    }  */
 /*
     for (int i = 0; i < this.axe.length; i++) {
       if (event.getBlock().getTypeId() == axe[i]) {
