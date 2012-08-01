@@ -8,9 +8,11 @@ import org.bukkit.event.block.BlockBreakEvent;
 public class BlockBreakListener implements Listener {
   //What tool you need to destroy these blocks
   private final int[] pick = {1, 4, 15, 16, 21, 22, 23, 24, 41, 42, 43, 44, 45, 48, 49, 52, 56, 57, 61, 62, 67, 69, 70, 71, 73, 74, 77, 82, 87, 89, 97, 98, 101, 108, 109, 112, 113, 114, 121, 129, 133};
-  //private final int[] axe;
-  //private final int[] shovel;
-  //private final int[] shears;
+  private final int[] axe = {5, 17, 25, 29, 33, 35, 47, 50, 53, 54, 58, 63};
+  //private final int[] shovel = {46,  55, 59, 60};
+  //private final int[] shears = {32, 37, 38, 39, 40};
+  //special 18 cobweb:30
+  //pumpkin and watermelon hoe
 
   private final int[] pick_tool = {270, 274, 257, 285, 278};
 
