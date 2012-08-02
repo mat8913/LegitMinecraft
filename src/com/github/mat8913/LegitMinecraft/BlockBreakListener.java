@@ -13,7 +13,7 @@ public class BlockBreakListener implements Listener {
   private final int[] shovel = {2, 3, 12, 13, 46, 55, 59, 60, 78, 80, 82, 88, 110};
   private final int[] shears = {6, 31, 32, 37, 38, 39, 40, 83, 104, 105, 106, 111, 115, 127, 132};
   private final int[] sword = {19, 30, 35, 81, 123, 124};
-  private final int[] hoe = {86, 91, 103}
+  private final int[] hoe = {86, 91, 103};
   //special 18
 
   private final int[] pick_tool = {270, 274, 257, 285, 278};
@@ -109,6 +109,7 @@ public class BlockBreakListener implements Listener {
       }
       event.setCancelled(true);
       event.getPlayer().sendMessage("You need shears or a shovel to break this block.");
+    }
   }
 
 }
