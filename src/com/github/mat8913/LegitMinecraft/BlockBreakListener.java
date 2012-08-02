@@ -17,6 +17,11 @@ public class BlockBreakListener implements Listener {
   //special 18
 
   private final int[] pick_tool = {270, 274, 257, 285, 278};
+  private final int[] axe_tool = {271, 275, 258, 286, 279};
+  private final int[] shovel_tool = {269, 273, 256, 284, 277};
+  private final int[] shears_tool = {359};
+  private final int[] sword_tool = {268, 272, 267, 283, 276};
+  private final int[] hoe_tool = {290, 291, 292, 294, 293};
 
   /**
    * @param  blockIds  an array of blocks which require a tools to break
@@ -50,43 +55,6 @@ public class BlockBreakListener implements Listener {
       event.getPlayer().sendMessage("You need a pickaxe to break this block.");
       return;
     }
-    
-   /* for (int i = 0; i < this.pick.length; i++) {
-      if (event.getBlock().getTypeId() == pick[i]) {
-        for (int x = 0; x < this.pick_tool.length; x++) {
-          if (event.getPlayer().getItemInHand().getTypeId() == this.pick_tool[x]) {
-            correctTool = true;
-            x = this.pick_tool.length;
-          }
-        }
-        if (!correctTool) {
-          event.setCancelled(true);
-          event.getPlayer().sendMessage("You need a pickaxe to break this block");
-        }
-      }
-    }  */
-/*
-    for (int i = 0; i < this.axe.length; i++) {
-      if (event.getBlock().getTypeId() == axe[i]) {
-        //Cancel event
-        event.getPlayer().sendMessage("You need an axe to break this block.");
-      }
-    }
-
-     for (int i = 0; i < this.axe.length; i++) {
-      if (event.getBlock().getTypeId() == shovel[i]) {
-        //Cancel event
-        event.getPlayer().sendMessage("You need a shovel to break this block.");
-      }
-    }
-
-    for (int i = 0; i < this.axe.length; i++) {
-      if (event.getBlock().getTypeId() == shears[i]) {
-        //Cancel event
-        event.getPlayer().sendMessage("You need shears to break this block.");
-      }
-    }
-*/
   }
 
 }
