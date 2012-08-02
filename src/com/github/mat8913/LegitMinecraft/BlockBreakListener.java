@@ -48,13 +48,67 @@ public class BlockBreakListener implements Listener {
   @EventHandler(priority = EventPriority.HIGH)
   public void blockBreak(BlockBreakEvent event) {
     //FIXME: Not very efficient I would assume (but then again, Minecraft isn't very efficient)
-    if (correctTool(pick, pick_tool, event.getBlock().getTypeId(), event.getPlayer().getItemInHand().getTypeId()) == 0)
+    int block = event.getBlock().getTypeId();
+    int tool = event.getPlayer().getItemInHand().getTypeId();
+
+    int correct = correctTool(pick, pick_tool, block, tool);
+    if (correct == 0)
       return;
-    if (correctTool(pick, pick_tool, event.getBlock().getTypeId(), event.getPlayer().getItemInHand().getTypeId()) == 1) {
+    if (correct == 1) {
       event.setCancelled(true);
       event.getPlayer().sendMessage("You need a pickaxe to break this block.");
       return;
     }
+
+    correct = correctTool(axe, axe_tool, block, tool);
+    if (correct == 0)
+      return;
+    if (correct == 1) {
+      event.setCancelled(true);
+      event.getPlayer().sendMessage("You need an axe to break this block.");
+    }
+
+    correct = correctTool(shovel, shovel_tool, block, tool);
+    if (correct == 0)
+      return;
+    if (correct == 1) {
+      event.setCancelled(true);
+      event.getPlayer().sendMessage("You need a shovel to break this block.");
+    }
+
+    correct = correctTool(shears, shears_tool, block, tool);
+    if (correct == 0)
+      return;
+    if (correct == 1) {
+      event.setCancelled(true);
+      event.getPlayer().sendMessage("You need shears to break this block.");
+    }
+
+    correct = correctTool(sword, sword_tool, block, tool);
+    if (correct == 0)
+      return;
+    if (correct == 1) {
+      event.setCancelled(true);
+      event.getPlayer().sendMessage("You need a sword to break this block.");
+    }
+
+    correct = correctTool(hoe, hoe_tool, block, tool);
+    if (correct == 0)
+      return;
+    if (correct == 1) {
+      event.setCancelled(true);
+      event.getPlayer().sendMessage("You need a hoe to break this block.");
+    }
+
+    if (block == 18) {
+      if (tool == shears_tool[0])
+        return;
+      for (int i = 0; i < shovel_tool.length; i++) {
+        if (tool == shovel_tool[i])
+          return;
+      }
+      event.setCancelled(true);
+      event.getPlayer().sendMessage("You need shears or a shovel to break this block.");
   }
 
 }
